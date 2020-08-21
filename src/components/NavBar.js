@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import logo from '../assets/images/logo.svg';
-import cart from '../assets/images/cart.png';
+
+import CartIcon from '../components/CartIcon';
 
 class NavBar extends Component{
 
@@ -18,16 +19,20 @@ class NavBar extends Component{
                     </div>                    
                     
                     <nav id="menu">
-                        <ul>                            
+                        <ul className="nav">                            
                             <li>
                                 <a href="#">Catálogo</a>
-                            </li>                                                                                   
+                            </li>                            
+
                             <li>
-                                <a href="#">Cart <i class="fas fa-shopping-basket"></i></a>  
+                                <a href="#">Mi cuenta</a> 
+                                <ul>
+                                    <li><a href="">Perfil</a></li>
+                                    <li><a href="">Pedidos</a></li>
+                                </ul>                                    
                             </li>
-                            <li>
-                                <a href="#">Mi cuenta</a>  
-                            </li>                       
+
+                            <CartIcon />                       
                         </ul>
                     </nav>
                     

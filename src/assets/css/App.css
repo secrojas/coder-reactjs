@@ -18,6 +18,8 @@ body {
   border-top: 5px solid #61dafb;
 }
 
+
+
 .center{
   width: 75%;
   margin: 0px auto;
@@ -60,23 +62,61 @@ body {
 }
 
 #menu{
-  width: 70%;
+  width: 60%;
   float:right;
   font-size: 18px;
 }
 
-#menu ul{
-  line-height: 50px;
-  width: 60%;
-  float:right;
+ul, ol {
+  list-style:none;
 }
 
-#menu ul li{
-  display: inline-block;
-  list-style: none;
-  height: 46px;
-  margin-left: 15px;
-  margin-right: 15px;
+.nav > li {
+  float:left;
+}
+
+.nav li{  
+  
+  text-decoration:none;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav li a {
+  
+  color:#fff;
+  text-decoration:none;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav li a:hover {
+  background-color:white;
+}
+
+.nav li ul {
+  display:none;
+  position:absolute;
+  min-width:140px;
+}
+
+.nav li:hover > ul {
+  display:block;
+}
+
+.nav li ul li {
+  position:relative;
+  background-color:white;
+  text-align: left;
+}
+
+.nav li ul li a:hover {
+  background-color:white;
+}
+
+.nav li ul li ul {
+  right:-140px;
+  top:0px;
 }
 
 #menu a{

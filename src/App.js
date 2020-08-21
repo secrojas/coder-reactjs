@@ -2,11 +2,13 @@ import React from 'react';
 import logo from './assets/images/logo.svg';
 import './assets/css/App.css';
 
-//Importar mis componentes
+//Importo mis componentes
 
 import NavBar from './components/NavBar';
 import Slider from './components/Slider';
 import Footer from './components/Footer';
+
+import Home from './components/Home';
 
 function App() {
   return (
@@ -16,15 +18,9 @@ function App() {
 
       <Slider />
 
-      <header className="App-header">              
-
-        <section className="componentes"> 
-
-          <br/><br/><br/><br/><br/><br/>         
-
-        </section>
-
-      </header>
+      <Home 
+          greeting='Pagina Principal'
+      />
 
       <Footer />
 
