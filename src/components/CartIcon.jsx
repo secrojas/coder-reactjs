@@ -6,7 +6,7 @@ class CartIcon extends Component{
         return(
             
             <li>
-                <a href="#">Cart <i className="fas fa-shopping-basket"></i></a>
+                <a href="#">Cart({this.props.totalItems}) <i className="fas fa-shopping-basket"></i></a>
                 <ul>
                     <li>Actualmente vacío!</li>                   
                 </ul> 

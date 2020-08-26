@@ -302,21 +302,25 @@ textarea{
   padding: 0px;
 }
 
+#articles {
+  margin: 5px;  
+}
+
 .article-item{
   width: 100%;
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
   padding-top: 20px;
-  text-align: left;
+  text-align: center;
 }
 
 .article-item .image-wrap {
-  width: 130px;
+  
   height: 130px;
   overflow:hidden;
-  float:left;
-  margin-right: 15px;
-  border: 1px solid #ccc;
+  
+  
+  
 }
 
 .article-item .image-wrap img{
@@ -339,14 +343,58 @@ textarea{
 }
 
 .article-item a{
-  display: block;
-  color: #444;
+  color:white;
   text-decoration: none;
-  margin-top: 10px;
+  text-align: center;
+  margin: 10px auto;
+  font-weight:300;
+  text-transform: none;
+  
+}
+
+.article-item input{  
+  margin: 10px auto;
+  width:50px; 
+  text-align: center; 
+}
+
+.btnMenos{  
+  margin-right: 5px;
+  font-size:30px;
+  background-color: #f7f7f7;
+  color:#3cb2d3;
+  border:1px;
+  border-color: darkgray;
+  vertical-align: middle;
+  width:30px;
+  height: 40px;   
+}
+
+.btnMas{  
+  margin-left: 5px;
+  font-size:30px;
+  background-color: #f7f7f7;
+  color:#3cb2d3;
+  border:1px;
+  border-color: darkgray;
+  vertical-align: middle;
+  width:30px;
+  height: 40px;   
+}
+
+.btnComprar{ 
+  font-size:15px;
+  background-color: #3cb2d3;
+  border:1px;
+  border-color: #3cb2d3;
+  color:#f7f7f7;
+  vertical-align: middle;
+  width:150px;
+  padding:10px;    
 }
 
 .article-item a:hover{
-  text-decoration: underline;
+
 }
 
 .subheader{

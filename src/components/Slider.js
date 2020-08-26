@@ -6,7 +6,7 @@ class Slider extends Component{
         return(
             <div id="slider" className="slider-big">
                 <h1>Bienvenido a la tienda virtual</h1>
-                <a href="#" class="btn-white">Mi cuenta</a>
+                <a href="#" className="btn-white">Mi cuenta</a>
             </div>
         );
     }
