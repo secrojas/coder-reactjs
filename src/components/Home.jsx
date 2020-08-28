@@ -24,16 +24,16 @@ function Link() {
 function Home(props) {
   //crear listado de productos
   const [productos, guardarProductos] = useState([
-    { id: 1, nombre: "Producto 1", precio: 50 },
-    { id: 2, nombre: "Producto 2", precio: 70 },
-    { id: 3, nombre: "Producto 3", precio: 180 },
+    { id: 1, nombre: "Producto 1", precio: 50, imagen:"producto1.jpg" },
+    { id: 2, nombre: "Producto 2", precio: 70, imagen:"producto2.jpg" },
+    { id: 3, nombre: "Producto 3", precio: 180, imagen:"producto3.jpg"},
   ]);
 
   //State para el carrito de compras
   const [carrito, agregarProducto] = useState([]);
 
   const eliminarProducto = (id) => {
-    agregarProducto(carrito.filter((item) => item.id != id));
+    agregarProducto(carrito.filter((item) => item.id !== id));
   };
 
 

@@ -10,8 +10,8 @@ export function ItemCarrito({ producto, eliminarProducto }) {
 
         <div className="image-wrap">
           <img
-            src="https://unhabitatmejor.leroymerlin.es/sites/default/files/styles/header_category/public/2018-10/4%20paisaje%20macedonia.jpg?itok=AELknmF8"
-            alt="Paisaje"
+            src="/images/producto1.jpg"
+            alt="producto"
           />
         </div>
 

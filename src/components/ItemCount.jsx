@@ -11,7 +11,7 @@ export function ItemCount({
 }) {
   const [contador, setContador] = useState(initial);
 
-  const { nombre, precio, id } = producto;
+  const { nombre, precio, id, imagen } = producto;
 
   const incrementar = () => {
     if (contador < max) {
@@ -46,8 +46,8 @@ export function ItemCount({
 
         <div className="image-wrap">
           <img
-            src="https://unhabitatmejor.leroymerlin.es/sites/default/files/styles/header_category/public/2018-10/4%20paisaje%20macedonia.jpg?itok=AELknmF8"
-            alt="Paisaje"
+            src="/images/producto1.jpg"
+            alt="producto"
           />
         </div>
 
@@ -71,6 +71,7 @@ export function ItemCount({
                 className="btnComprar"
                 type="button"
                 onClick={() => seleccionarProducto(id)}
+                
               >
                 Agregar al carrito
               </button>
