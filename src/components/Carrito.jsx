@@ -1,6 +1,5 @@
 import React from "react";
 
-import ItemCount from "./ItemCount";
 import { ItemCarrito } from "./ItemCarrito";
 
 const Carrito = ({ carrito, eliminarProducto }) => (

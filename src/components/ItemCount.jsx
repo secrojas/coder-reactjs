@@ -9,9 +9,7 @@ export function ItemCount({
   agregarProducto,
   productos,
 }) {
-  const [contador, setContador] = useState(initial);
-
-  const { nombre, precio, id, imagen } = producto;
+  const [contador, setContador] = useState(initial);  
 
   const incrementar = () => {
     if (contador < max) {
@@ -37,22 +35,12 @@ export function ItemCount({
   const seleccionarProducto = (id) => {
     const producto = productos.find((producto) => producto.id === id);
     agregarProducto([...carrito,{...producto, contador}]);
+    setContador(initial);
+
   };
 
   return (
-    <div>
-      <article className="article-item" id="article-template">
-        <h2>{nombre}</h2>
-
-        <div className="image-wrap">
-          <img
-            src="/images/producto1.jpg"
-            alt="producto"
-          />
-        </div>
-
-        <h2>$ {precio}</h2>
-
+    <div> 
         {productos ? (
           <div>
             <button onClick={disminuir} className="btnMenos">
@@ -70,7 +58,7 @@ export function ItemCount({
                 href="/carrito"
                 className="btnComprar"
                 type="button"
-                onClick={() => seleccionarProducto(id)}
+                onClick={() => seleccionarProducto(producto.id)}
                 
               >
                 Agregar al carrito
@@ -100,7 +88,6 @@ export function ItemCount({
             <div className="clearfix"></div>
           </div>
         )}
-      </article>
     </div>
   );
 }
