@@ -1,29 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
 import Carrito from "../components/Carrito";
 import ItemList from "../components/ItemList";
+import useFetch from "./hooks/useFetch";
+import { urlApiProducts } from "../utils/constants";
 
-function Home(props) {  
+function Home(props) { 
+  
+  const productos = useFetch(urlApiProducts, null);  
 
   //State para el carrito de compras
   const [carrito, agregarProducto] = useState([]);
 
-  const eliminarProducto = (id) => {
-    agregarProducto(carrito.filter((item) => item.id !== id));
-  };
+  const eliminarProducto = (sku) => {
+    agregarProducto(carrito.filter((item) => item.sku !== sku));
+  };  
 
-  const promise = new Promise((resolve, reject) =>{
-    setTimeout(()=>{
-      resolve(
-        "PROMESA funcionando"
-      )
-    },2000);
-  });
+  // const result = useFetch(urlApiProducts, null);
 
-  promise.then(result => {
-    console.log(result);
-  });
+  // console.log(result);
     
   return (
     <div className="center">
@@ -31,8 +27,12 @@ function Home(props) {
         
         <h1>{props.greeting}</h1>
 
-        <ItemList carrito={carrito} agregarProducto={agregarProducto}/>
-        
+        <ItemList 
+          productos={productos}
+          carrito={carrito} 
+          agregarProducto={agregarProducto}
+        />
+
       </section>
 
       <aside id="sidebar">

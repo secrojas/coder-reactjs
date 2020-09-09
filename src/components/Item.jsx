@@ -4,13 +4,13 @@ import ItemCount from "./ItemCount";
 
 function Item({producto,productos,carrito,agregarProducto}){
 
-  const { nombre, precio} = producto;
+  const { name,salePrice,image} = producto;
 
   return(
     
     <div>
       <article className="article-item" id="article-template">
-        <h2>{nombre}</h2>
+        <h2>{name}</h2>
 
         <div className="image-wrap">
           <img
@@ -19,7 +19,7 @@ function Item({producto,productos,carrito,agregarProducto}){
           />
         </div>
 
-        <h2>$ {precio}</h2>
+        <h2>$ {salePrice}</h2>
 
         <ItemCount
             min={1}

@@ -32,8 +32,8 @@ export function ItemCount({
   };
 
   //agregar producto al carrito
-  const seleccionarProducto = (id) => {
-    const producto = productos.find((producto) => producto.id === id);
+  const seleccionarProducto = (sku) => {
+    const producto = productos.find((producto) => producto.sku === sku);
     agregarProducto([...carrito,{...producto, contador}]);
     setContador(initial);
 
@@ -58,8 +58,7 @@ export function ItemCount({
                 href="/carrito"
                 className="btnComprar"
                 type="button"
-                onClick={() => seleccionarProducto(producto.id)}
-                
+                onClick={() => seleccionarProducto(producto.sku)}                
               >
                 Agregar al carrito
               </button>

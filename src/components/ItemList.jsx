@@ -2,32 +2,30 @@ import React, {useState } from "react";
 
 import Item from "../components/Item";
 
-function ItemList({carrito,agregarProducto}){
 
-  const [productos] = useState([
-    { id: 1, nombre: "Producto A", precio: 10, imagen:"producto1.jpg" },
-    { id: 2, nombre: "Producto B", precio: 20, imagen:"producto2.jpg" },
-    { id: 3, nombre: "Producto C", precio: 30, imagen:"producto3.jpg"},
-  ]);
+function ItemList(props){ 
 
-  
+  const {
+    productos: { result, loading, error }
+  } = props;
 
+  console.log(props);
+ 
   return(
     
     <div>
-
-      {productos.map((producto) => (      
-
-        <Item
-          key={producto.id}
-          producto={producto}
-          productos={productos}
-          carrito={carrito}
-          agregarProducto={agregarProducto}
-        />
-
-      ))}
-
+      { loading || !result      
+      ? "Cargando.."
+      : result.products.map((producto,index) => (     
+          <Item
+            key={producto.sku}
+            producto={producto}
+            productos={result.products}
+            carrito={props.carrito}
+            agregarProducto={props.agregarProducto}
+          />          
+        ))
+      }
     </div>
 
   );

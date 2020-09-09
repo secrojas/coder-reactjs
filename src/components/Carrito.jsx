@@ -11,7 +11,7 @@ const Carrito = ({ carrito, eliminarProducto }) => (
       carrito.map((producto) => (
         <ItemCarrito
           eliminarProducto={eliminarProducto}
-          key={producto.id}
+          key={producto.sku}
           producto={producto}
         />
       ))
