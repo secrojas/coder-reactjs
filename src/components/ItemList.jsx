@@ -1,32 +1,34 @@
 import React, {useState } from "react";
-
-import Item from "../components/Item";
+import Item from './Item/Item';
+import Loading from "../components/Loading";
+import { Container, Row } from "react-bootstrap";
 
 
 function ItemList(props){ 
 
   const {
-    productos: { result, loading, error }
+    products: { result, loading, error }
   } = props;
-
-  console.log(props);
  
   return(
     
-    <div>
+    <Container>
+      <Row>
       { loading || !result      
-      ? "Cargando.."
+      ? (<Loading />)
       : result.products.map((producto,index) => (     
           <Item
             key={producto.sku}
             producto={producto}
-            productos={result.products}
+            products={result.products}
             carrito={props.carrito}
             agregarProducto={props.agregarProducto}
+            addProductCart={props.addProductCart}
           />          
         ))
       }
-    </div>
+     </Row>
+    </Container>
 
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
 export function ItemCount({
   max,
@@ -7,7 +8,8 @@ export function ItemCount({
   producto,
   carrito,
   agregarProducto,
-  productos,
+  products,
+  addProductCart,
 }) {
   const [contador, setContador] = useState(initial);  
 
@@ -33,7 +35,7 @@ export function ItemCount({
 
   //agregar producto al carrito
   const seleccionarProducto = (sku) => {
-    const producto = productos.find((producto) => producto.sku === sku);
+    const producto = products.find((producto) => producto.sku === sku);
     agregarProducto([...carrito,{...producto, contador}]);
     setContador(initial);
 
@@ -41,7 +43,7 @@ export function ItemCount({
 
   return (
     <div> 
-        {productos ? (
+        {products ? (
           <div>
             <button onClick={disminuir} className="btnMenos">
               {" "}
@@ -54,14 +56,13 @@ export function ItemCount({
             </button>
 
             <div>
-              <button
-                href="/carrito"
+              <Button                
                 className="btnComprar"
                 type="button"
-                onClick={() => seleccionarProducto(producto.sku)}                
+                onClick={() => addProductCart(producto.sku,producto.name)}                
               >
-                Agregar al carrito
-              </button>
+                Agregar
+              </Button>
             </div>
 
             <div className="clearfix"></div>

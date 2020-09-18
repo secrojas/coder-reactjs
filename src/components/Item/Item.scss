@@ -1,0 +1,30 @@
+.item {
+    padding: 0;
+  
+    .card {
+      margin: 15px;
+      border:none;
+      font-family: Barlow;
+  
+      .card-title {
+        height: 70px;
+      }
+  
+      .btn {
+        width: 100%;
+        background-color: transparent;
+        color: #EF811A;
+        border-color: #EF811A;
+        border-radius: 5px;
+  
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: #EF811A !important;
+          border-color: #EF811A;
+          color: #fff;
+          box-shadow: none !important;
+        }
+      }
+    }
+  }

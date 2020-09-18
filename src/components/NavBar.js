@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import logo from '../assets/images/logo.svg';
-
 import CartIcon from '../components/CartIcon';
+import {Link} from 'react-router-dom';
+
 
 class NavBar extends Component{
 
@@ -12,23 +13,29 @@ class NavBar extends Component{
                 <div className="center">
                    
                     <div id="logo">
-                        <img src={logo} className="app-logo" alt="secrojas | desarrollo web"/>
-                        <span id="brand">
-                            <strong>Coder</strong> tienda
-                        </span>
+                        <Link to={'/'}>
+                            <img src={logo} className="app-logo" alt="secrojas | desarrollo web"/>
+                            <span id="brand">
+                                <strong>Coder</strong> tienda
+                            </span>
+                        </Link>
                     </div>                    
                     
                     <nav id="menu">
                         <ul className="nav">                            
                             <li>
-                                <a href="#">Catálogo</a>
+                                <Link to={'/products'}>Catálogo</Link>
+                            </li>
+
+                            <li>
+                                <Link to={'/cart'}>Carrito</Link>
                             </li>                            
 
                             <li>
-                                <a href="#">Mi cuenta</a> 
+                                <a>Mi cuenta</a> 
                                 <ul>
-                                    <li><a href="">Perfil</a></li>
-                                    <li><a href="">Pedidos</a></li>
+                                    <li><Link to={'/profile'}>Perfil</Link></li>
+                                    <li><Link to={'/orders'}>Pedidos</Link></li>
                                 </ul>                                    
                             </li>
 

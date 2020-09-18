@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export function ItemCarrito({ producto, eliminarProducto }) {
   
@@ -11,7 +11,7 @@ export function ItemCarrito({ producto, eliminarProducto }) {
 
         <div className="image-wrap">
           <img
-            src="/images/producto1.jpg"
+            src={image}
             alt="producto"
           />
         </div>
