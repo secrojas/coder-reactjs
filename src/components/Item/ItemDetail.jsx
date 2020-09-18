@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {Container, Row, Col, Card, Button} from "react-bootstrap";
+import {Container, Row, Col, Card} from "react-bootstrap";
+import ItemCount from '../ItemCount';
 
 function ItemDetail(props){
 
@@ -27,7 +28,7 @@ function ItemDetail(props){
     }
   };
 
-    function giveMeCount(c){
+    function cuenta(c){
         setContador(c)
         console.log('c => ', c, 'count => ', contador);
     }    
@@ -48,24 +49,13 @@ function ItemDetail(props){
                     <Card.Text>
                       Descripción del producto. Sin definir aún. En trabajo.
                     </Card.Text>
-                    <button onClick={disminuir} className="btnMenos">
-                      {" "}
-                      -{" "}
-                    </button>
-                    <span style={{ color: "red", fontSize: "20px" }}> {contador} </span>
-                    <button onClick={incrementar} className="btnMas">
-                      {" "}
-                      +{" "}
-                    </button>
 
-                    <div>
-                      <Button                
-                        className="btnComprar"
-                        type="button"                                        
-                      >
-                        Agregar:
-                      </Button>
-                    </div>                    
+                    <ItemCount 
+                      min={1}
+                      max={10}
+                      initial={1}
+                    />
+
                   </Card.Body>
                 </Card>
               </Col>
