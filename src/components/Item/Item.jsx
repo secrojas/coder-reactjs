@@ -17,8 +17,8 @@ function Item({producto,products,carrito,agregarProducto,addProductCart}){
         <Card.Img variant="top" src={image} alt="producto" />
         <Card.Body>
           <Link to={{pathname: `/itemdetail/${sku}`, state: {test:'test'}}} style={{textDecoration:'none',color:'black'}}>
-            <Card.Title>{name}</Card.Title>          
-          </Link>
+            <Card.Title style={{fontSize:'16px'}}>{name}</Card.Title>          
+          </Link>          
           <Card.Text>$ {salePrice.toFixed(2)} </Card.Text>
           {/* <ItemCount
             min={1}
@@ -31,8 +31,7 @@ function Item({producto,products,carrito,agregarProducto,addProductCart}){
             addProductCart={addProductCart}
           /> */}
           <div>
-            <Button                
-              className="btnComprar"
+            <Button
               type="button"
               onClick={() => addProductCart(producto.sku,producto.name)}                
             >

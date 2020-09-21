@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useParams} from 'react'
+import React, {useState, useEffect} from 'react'
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer= (props)=> {
@@ -13,7 +13,7 @@ const ItemDetailContainer= (props)=> {
         setTimeout(
             function(){
                 fetch(                    
-                    `https://api.bestbuy.com/v1/products/${sku}.json?show=sku,name,salePrice,image&apiKey=cMr020rNBextd4Z7Birt0wzY`
+                    `https://api.bestbuy.com/v1/products/${sku}.json?show=sku,name,shortDescription,salePrice,image&apiKey=cMr020rNBextd4Z7Birt0wzY`
                 )
                 .then(function(response){
                     return response.json();
@@ -23,9 +23,7 @@ const ItemDetailContainer= (props)=> {
                 })
             }, 3
         )
-    }, [])
-
-    
+    }, [])    
 
     if(item === false){
         return <div style={{margin: '4vh 7vw'}}>
@@ -37,7 +35,8 @@ const ItemDetailContainer= (props)=> {
                 min={1}
                 max={10}
                 initial={1} 
-                name={item.name} 
+                name={item.name}
+                shortDescription={item.shortDescription} 
                 salePrice={item.salePrice} 
                 image={item.image} />
         </div>
