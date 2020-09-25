@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Col, Card} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import "./Item.scss";
 import { Button } from "react-bootstrap";
 
-// import ItemCount from "../ItemCount";
+import { CartContext } from '../../context/cartContext';
 
-function Item({producto,products,carrito,agregarProducto,addProductCart}){
+function Item({producto}){
 
   const { name,salePrice,image,sku} = producto;
+
+  const {addProductCart}  = useContext(CartContext);
   
   return(
 
@@ -33,7 +35,7 @@ function Item({producto,products,carrito,agregarProducto,addProductCart}){
           <div>
             <Button
               type="button"
-              onClick={() => addProductCart(producto.sku,producto.name)}                
+              onClick={() => addProductCart(producto.sku,producto.name,1)}                
             >
               Agregar
             </Button>

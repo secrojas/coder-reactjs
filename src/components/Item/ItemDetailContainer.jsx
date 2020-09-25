@@ -7,9 +7,8 @@ const ItemDetailContainer= (props)=> {
     
 
     useEffect(() => {
-        let sku = props.match.params.sku;
+        let sku = props.match.params.sku;        
         
-        console.log(sku);
         setTimeout(
             function(){
                 fetch(                    
@@ -34,7 +33,8 @@ const ItemDetailContainer= (props)=> {
             <ItemDetail
                 min={1}
                 max={10}
-                initial={1} 
+                initial={1}
+                sku={item.sku} 
                 name={item.name}
                 shortDescription={item.shortDescription} 
                 salePrice={item.salePrice} 

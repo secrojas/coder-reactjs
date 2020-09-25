@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Button } from "react-bootstrap";
 import "./Item/Item.scss";
+import { ToastContainer} from "react-toastify";
+
+import { CartContext } from '../context/cartContext';
 
 export function ItemCount({
   max,
   min,
   initial,
-  cuenta,
+  sku,
+  name
 }) {
-    const [contador, setContador] = useState(initial);  
+    const [contador, setContador] = useState(initial);
+    
+    const {addProductCart}  = useContext(CartContext);
 
     const incrementar = () => {
       if (contador < max) {
@@ -43,7 +49,24 @@ export function ItemCount({
           </button>
 
           <div>
-            <Button variant="warning" style={{backgroundColor:'#EF811A',color:'white',fontFamily:'Barlow'}}> Agregar: {contador}</Button>
+            <Button 
+              variant="warning" 
+              style={{backgroundColor:'#EF811A',color:'white',fontFamily:'Barlow'}}
+              onClick={() => addProductCart(sku, name, contador)}
+            > 
+              Agregar: {contador}
+            </Button>
+            <ToastContainer
+              position="bottom-left"
+              autoClose={5000}
+              hideProgressBar
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnVisibilityChange={false}
+              draggable
+              pauseOnHover={false}
+            />
           </div>
 
           <div className="clearfix"></div>

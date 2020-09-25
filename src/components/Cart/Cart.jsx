@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
-import { Button } from "react-bootstrap";
+import React, {useState, useEffect, useContext} from "react";
+import { Button, Badge } from "react-bootstrap";
 import { ReactComponent as CartEmpty } from "../../assets/images/cart-empty.svg";
 import { ReactComponent as CartFull } from "../../assets/images/cart-full.svg";
 import { ReactComponent as Close } from "../../assets/images/close.svg";
 import { ReactComponent as Garbage } from "../../assets/images/garbage.svg";
-import { STORAGE_PRODUCTS_CART, BASE_PATH} from "../../utils/constants";
+import { STORAGE_PRODUCTS_CART} from "../../utils/constants";
 import {
     removeArrayDuplicates,
     countDuplicatesItemArray,
@@ -13,9 +13,14 @@ import {
 
 import "./Cart.scss";
 
+import { CartContext } from '../../context/cartContext';
+
 export default function Cart(props) {
 
-    const { productsCart, getProductsCart, products } = props;
+    const { products } = props;
+
+    const {productsCart, getProductsCart}  = useContext(CartContext);
+
     const [cartOpen, setCartOpen] = useState(false);
     const widthCartContent = cartOpen ? 400 : 0;
     const [singelProductsCart, setSingelProductsCart] = useState([]);    
@@ -58,7 +63,11 @@ export default function Cart(props) {
         <>
             <Button variant="link" className="cart">
                 {productsCart.length > 0 ? (
-                <CartFull onClick={openCart} />
+                <div>
+                  <CartFull onClick={openCart} />
+                  <Badge onClick={openCart} variant="warning" style={{marginLeft:'5px',marginTop:'5px',fontSize:'13px'}}>{productsCart.length}</Badge>
+                </div>
+                
                 ) : (
                 <CartEmpty onClick={openCart} />
                 )}

@@ -3,15 +3,11 @@ import ItemList from "../components/ItemList";
 
 function Home(props) { 
 
-  //State para el carrito de compras
-  // const [carrito, agregarProducto] = useState([]);
-  // const [productsCart, setProductsCart] = useState([]);
+  const { products} = props;  
 
-  const { products, productsCart, setProductsCart,addProductCart} = props;  
-
-  const eliminarProducto = (sku) => {
-    setProductsCart(productsCart.filter((item) => item.sku !== sku));
-  };
+  // const eliminarProducto = (sku) => {
+  //   setProductsCart(productsCart.filter((item) => item.sku !== sku));
+  // };
     
   return (
     <div className="center">
@@ -19,11 +15,9 @@ function Home(props) {
         textAlign: 'center',
         marginTop: '2vh',
       }}>
-        <h2>{props.greeting}</h2>
+        <h2>Productos destacados</h2>
         <ItemList 
           products={products}
-          carrito={productsCart}
-          addProductCart={addProductCart}
         />        
       </section>
 

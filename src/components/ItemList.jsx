@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React from "react";
 import Item from './Item/Item';
 import Loading from "../components/Loading";
 import { Container, Row } from "react-bootstrap";
@@ -21,9 +21,6 @@ function ItemList(props){
             key={producto.sku}
             producto={producto}
             products={result.products}
-            carrito={props.carrito}
-            agregarProducto={props.agregarProducto}
-            addProductCart={props.addProductCart}
           />          
         ))
       }

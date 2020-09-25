@@ -1,5 +1,4 @@
 import React from "react";
-import Carrito from "../components/Carrito";
 import ItemList from "../components/ItemList";
 
 function Home(props) { 
@@ -8,11 +7,7 @@ function Home(props) {
   // const [carrito, agregarProducto] = useState([]);
   // const [productsCart, setProductsCart] = useState([]);
 
-  const { products, productsCart, setProductsCart,addProductCart} = props;  
-
-  const eliminarProducto = (sku) => {
-    setProductsCart(productsCart.filter((item) => item.sku !== sku));
-  };
+  const { products} = props; 
     
   return (
     <div className="center">
@@ -20,11 +15,9 @@ function Home(props) {
         textAlign: 'center',
         marginTop: '2vh',
       }}>
-        <h2>Productos destacados</h2>
+        <h2>{props.greeting}</h2>
         <ItemList 
-          products={products}
-          carrito={productsCart}
-          addProductCart={addProductCart}
+          products={products}          
         />        
       </section>
 

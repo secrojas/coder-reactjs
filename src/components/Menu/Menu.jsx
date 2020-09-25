@@ -1,14 +1,14 @@
 import React from "react";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav} from "react-bootstrap";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
-import CartIcon from '../CartIcon';
 import {Link} from 'react-router-dom';
 import Cart from "../Cart/Cart";
-
+import Login from "../Login"
 import "./Menu.scss";
 
 export default function Menu(props) {
-  const { productsCart, getProductsCart, products } = props;
+  
+  const { products } = props;
 
   return (
   
@@ -38,28 +38,13 @@ export default function Menu(props) {
                     Contacto
                   </Link>                  
                 </Nav.Link>
-                
-                <NavDropdown title="Mi cuenta" id="collasible-nav-dropdown">
-                  <NavDropdown.Item>
-                    <Link to="/profile" className="prueba">
-                      Perfil
-                    </Link>                    
-                  </NavDropdown.Item>                               
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Link to="/orders"  className="prueba">
-                    Pedidos
-                  </Link>                  
-                  </NavDropdown.Item>
-                </NavDropdown>
             </Nav>
             <Nav>
-                <Cart 
-                  productsCart={productsCart}
-                  getProductsCart={getProductsCart}
+              
+                <Cart                   
                   products={products}
                 />
-                {/* <CartIcon /> */}
+                <Login/> 
                 
             </Nav>
             </Navbar.Collapse>
@@ -79,15 +64,5 @@ function BrandNav() {
               </Link>            
         </Nav.Link>
     </Navbar.Brand>
-  );
-}
-
-function MenuNav() {
-  return (
-    <Nav className="mr-auto">
-      <Nav.Link href="#">Productos</Nav.Link>
-      <Nav.Link href="#">Carrito</Nav.Link>
-      <Nav.Link href="#">Contacto</Nav.Link>
-    </Nav>
   );
 }

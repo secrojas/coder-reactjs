@@ -4,7 +4,7 @@ import ItemCount from '../ItemCount';
 
 function ItemDetail(props){
 
-    const {initial, name, salePrice, image, shortDescription} = props;     
+    const {initial, sku, name, salePrice, image, shortDescription} = props;
 
     const [contador, setContador] = useState(initial);  
 
@@ -35,6 +35,8 @@ function ItemDetail(props){
                       min={1}
                       max={10}
                       initial={1}
+                      sku={sku}
+                      name={name}
                     />
 
                   </Card.Body>
