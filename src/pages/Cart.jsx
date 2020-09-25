@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import { Container, Row, Col,Table, Button } from "react-bootstrap";
+import { Container, Row, Col,Table, Alert } from "react-bootstrap";
 import { STORAGE_PRODUCTS_CART} from "../utils/constants";
 import {
     removeArrayDuplicates,
@@ -10,6 +10,8 @@ import {
 import "../components/Cart/Cart.scss";
 
 import { CartContext } from '../context/cartContext';
+
+import {Link} from 'react-router-dom';
 
 export default function Cart(props) {
 
@@ -38,25 +40,54 @@ export default function Cart(props) {
       getProductsCart();
     };
 
-    return (
+    if(singelProductsCart.length===0)
+    {
+      return(
         <>
           <Container>
-            <h1 style={{textAlign:'center',marginTop:'30px'}}>{props.greeting}</h1>
-            <Row>
-              <Col sm={2}></Col>
-              <Col sm={8}>
-              <Table striped bordered hover style={{marginTop:'30px'}}>
+             <h1 style={{textAlign:'center',marginTop:'30px',fontFamily:'Barlow'}}>{props.greeting}</h1>
+             <Row>
+               <Col sm={2}></Col>
+               <Col sm={8} style={{marginTop:'30px',marginBottom:'100px'}}>
+               <Alert variant="warning">
+                  <Alert.Heading style={{fontFamily:'Barlow',color:'black'}}>Actualmente no hay items agregados</Alert.Heading>
+                  <p style={{fontFamily:'Barlow',color:'black'}}>
+                    Podes volver al listado de productos para realizar alguna compra.
+                  </p>
+                  <hr />
+                  <p className="mb-0" style={{width:'170px',backgroundColor:'#0098d3',padding:'10px',borderRadius:'12px',textAlign:'center',fontFamily:'Barlow'}}>
+                    <Link to="/products" style={{textDecoration:'none',color:'white',fontWeight:'500'}}>
+                      Volver a productos
+                    </Link>
+                  </p>
+                </Alert>
+               </Col>
+              </Row>
+            </Container>
+        </>
+      )
+    }
+    else
+    {
+      return(
+        <>
+           <Container>
+             <h1 style={{textAlign:'center',marginTop:'30px'}}>{props.greeting}</h1>
+             <Row>
+               <Col sm={2}></Col>
+               <Col sm={8}>
+               <Table striped bordered hover style={{marginTop:'30px'}}>
                 <thead>
                   <tr>
                     <th>Item</th>
                     <th>Imagen</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
+                     <th>Nombre</th>
+                     <th>Precio</th>
                     <th>Cantidad</th>
-                  </tr>
+                   </tr>
                 </thead>
-                <tbody>
-                  {singelProductsCart.map((idProductCart, index) => (
+                 <tbody>
+                   {singelProductsCart.map((idProductCart, index) => (
                     <CartContentProducts
                       key={index}
                       products={products}
@@ -72,7 +103,8 @@ export default function Cart(props) {
             </Row>          
           </Container>        
         </>
-    );
+      )
+    }  
 }
 
 function CartContentProducts(props) {
