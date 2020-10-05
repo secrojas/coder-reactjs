@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import {Container, Row, Col, Card} from "react-bootstrap";
-import ItemCount from '../ItemCount';
+import ItemCount from './ItemCount';
+import { BASE_PATH } from "../../utils/constants";
 
 function ItemDetail(props){
 
-    const {initial, sku, name, salePrice, image, shortDescription} = props;
-
-    const [contador, setContador] = useState(initial);  
-
-    function cuenta(c){
-        setContador(c)
-        console.log('c => ', c, 'count => ', contador);
-    }    
+    const {initial, id, title, price, image, description} = props;
 
     return(
         <div>
@@ -22,21 +16,20 @@ function ItemDetail(props){
               </Col>
               <Col md="auto">
                 <Card className="text-center">
-                  <Card.Header as="h5">{name}</Card.Header>
+                  <Card.Header as="h5">{title}</Card.Header>
                   <Card.Body>
-                    <Card.Img variant="top" src={image} alt="producto" style={{width:'200px'}} />
-                    <Card.Title>$ {salePrice.toFixed(2)}</Card.Title>
+                    <Card.Img variant="top" src={`${BASE_PATH}/${image}`} alt={`ticket ${title}`} style={{width:'300px'}} />
+                    <Card.Title>$ {price}</Card.Title>
                     <Card.Text>
-                      {shortDescription}
+                      {description}
                     </Card.Text>
                       
-                    <ItemCount 
-                      cuenta={cuenta}
-                      min={1}
+                    <ItemCount                       
+                      min={0}
                       max={10}
-                      initial={1}
-                      sku={sku}
-                      name={name}
+                      initial={initial}
+                      id={id}
+                      title={title}
                     />
 
                   </Card.Body>

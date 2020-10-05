@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Navbar, Nav} from "react-bootstrap";
+import { Container, Navbar, Nav,NavDropdown} from "react-bootstrap";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import {Link} from 'react-router-dom';
 import Cart from "../Cart/Cart";
@@ -17,38 +17,30 @@ export default function Menu(props) {
             <BrandNav /> 
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
-                <Nav.Link  className="prueba">
-                  <Link to="/categories" className="prueba">
-                    Categorías
-                  </Link>                  
-                </Nav.Link>
-                <Nav.Link  className="prueba">
+              <Nav className="prueba">
+                <NavDropdown title="Categorías" id="collasible-nav-dropdown" className="prueba" style={{color:'white',marginTop:'-9px'}}>
                   <Link to="/products" className="prueba">
-                    Productos
-                  </Link>                  
-                </Nav.Link>
-                <Nav.Link  className="prueba">
-                  <Link to="/cart" className="prueba">
-                    Carrito
-                  </Link>                  
-                </Nav.Link>
-                <Nav.Link  className="prueba">
-                  <Link to="/contact" className="prueba">
-                    Contacto
-                  </Link>                  
-                </Nav.Link>
-            </Nav>
-            <Nav>
+                    <span style={{color:'black'}}>Productos</span>
+                  </Link>                 
+                </NavDropdown>                
+                <Link to="/products" className="prueba">
+                  Productos
+                </Link>
+                <Link to="/cart" className="prueba">
+                  Carrito
+                </Link>
+                <Link to="/contact" className="prueba">
+                  Contacto
+                </Link> 
+              </Nav>
               
+              <Nav>
                 <Cart                   
                   products={products}
                 />
                 <Login/> 
-                
-            </Nav>
+              </Nav>
             </Navbar.Collapse>
-            
         </Container>
   </Navbar>
   );

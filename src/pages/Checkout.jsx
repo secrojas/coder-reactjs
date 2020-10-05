@@ -1,12 +1,7 @@
-/* eslint-disable react/jsx-no-target-blank */
 import React from "react";
-import ItemList from "../components/ItemList";
 import Sidebar from "../components/Sidebar";
 
-function Home(props) { 
-
-  const { products} = props;  
-      
+function Checkout(props) { 
   return (
     <div className="center">
       <section id="content" style={{
@@ -14,14 +9,12 @@ function Home(props) {
         marginTop: '30px',        
         fontFamily:'Barlow',
       }}>
-        <h2 style={{marginBottom:'20px'}}>Nuestros eventos destacados</h2>
-        <ItemList 
-          products={products}
-        />        
+        <h2 style={{marginBottom:'20px'}}>{props.greeting}</h2>
+               
       </section>
 
       <aside id="sidebar">
-        <Sidebar/>
+      <Sidebar/>
       </aside>      
 
       <div className="clearfix"></div>
@@ -30,4 +23,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default Checkout;

@@ -6,21 +6,17 @@ import { Container, Row } from "react-bootstrap";
 
 function ItemList(props){ 
 
-  const {
-    products: { result, loading, error }
-  } = props;
- 
   return(
     
     <Container>
       <Row>
-      { loading || !result      
+      { !props.products.length>0      
       ? (<Loading />)
-      : result.products.map((producto,index) => (     
+      : props.products.map((producto,index) => (     
           <Item
-            key={producto.sku}
+            key={producto.id}
             producto={producto}
-            products={result.products}
+            products={props.products}
           />          
         ))
       }

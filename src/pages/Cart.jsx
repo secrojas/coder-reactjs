@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import { Container, Row, Col,Table, Alert } from "react-bootstrap";
 import { STORAGE_PRODUCTS_CART} from "../utils/constants";
+import { BASE_PATH } from "../utils/constants";
 import {
     removeArrayDuplicates,
     countDuplicatesItemArray,
@@ -26,16 +27,16 @@ export default function Cart(props) {
         setSingelProductsCart(allProductsId);
       }, [productsCart]);
 
-    const increaseQuantity = sku => {
+    const increaseQuantity = id => {
       const arrayItemsCart = productsCart;
-      arrayItemsCart.push(sku);
+      arrayItemsCart.push(id);
       localStorage.setItem(STORAGE_PRODUCTS_CART, arrayItemsCart);
       getProductsCart();
     };
   
-    const decreaseQuantity = sku => {
+    const decreaseQuantity = id => {
       const arrayItemsCart = productsCart;
-      const result = removeItemArray(arrayItemsCart, sku.toString());
+      const result = removeItemArray(arrayItemsCart, id.toString());
       localStorage.setItem(STORAGE_PRODUCTS_CART, result);
       getProductsCart();
     };
@@ -116,13 +117,13 @@ function CartContentProducts(props) {
       decreaseQuantity
     } = props;
   
-    if (!products.loading && products.result) {
+    if (products.length>0) {
       
-      return products.result.products.map((product, index) => {  
+      return products.map((product, index) => {  
             
-        if (idProductCart == product.sku) {
+        if (idProductCart == product.id) {
           
-          const quantity = countDuplicatesItemArray(product.sku, idsProductsCart);
+          const quantity = countDuplicatesItemArray(product.id, idsProductsCart);
           return (
             <RenderProduct
               key={index}
@@ -146,22 +147,22 @@ function RenderProduct(props) {
       <tr>
         <td>
           <p style={{fontFamily:'Barlow',color:"black",fontWeight:'bold',textAlign:'center'}}>
-            {product.sku}
+            {product.id}
           </p>          
         </td>
         <td>
           <p style={{textAlign:'center'}}>
-            <img src={product.image} alt={product.name} style={{width:'70px'}}/>
+            <img src={`${BASE_PATH}/${product.image}`} alt={`ticket ${product.title}`} style={{width:'70px'}}/>
           </p>
         </td>
         <td>
           <p style={{fontFamily:'Barlow',color:"black",fontWeight:'bold',textAlign:'left'}}>
-            {product.name.substr(0, 25)}...
+            {product.title.substr(0, 25)}...
           </p>
         </td>
         <td>
           <p style={{fontFamily:'Barlow',color:"black",fontWeight:'bold',textAlign:'center'}}>
-            {product.salePrice.toFixed(2)}
+            {product.price}
           </p>
         </td>
         <td>

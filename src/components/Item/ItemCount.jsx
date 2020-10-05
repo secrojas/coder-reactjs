@@ -1,17 +1,16 @@
 import React, { useState,useContext } from "react";
 import { Button } from "react-bootstrap";
-import "./Item/Item.scss";
+import "./Item.scss";
 import { ToastContainer} from "react-toastify";
 
-import { CartContext } from '../context/cartContext';
+import { CartContext } from '../../context/cartContext';
 
 export function ItemCount({
   max,
   min,
   initial,
-  sku,
-  name
-}) {
+  id,
+  title}) {
     const [contador, setContador] = useState(initial);
     
     const {addProductCart}  = useContext(CartContext);
@@ -48,14 +47,22 @@ export function ItemCount({
             +{" "}
           </button>
 
+          
+
           <div>
+            {contador
+            ?
             <Button 
               variant="warning" 
               style={{backgroundColor:'#EF811A',color:'white',fontFamily:'Barlow'}}
-              onClick={() => addProductCart(sku, name, contador)}
+              onClick={() => addProductCart(id, title, contador)}
             > 
               Agregar: {contador}
             </Button>
+            :
+              <p style={{marginTop:'10px',fontFamily:'Barlow'}}>Indicar una cantidad válida para agregar item</p>
+            }
+            
             <ToastContainer
               position="bottom-left"
               autoClose={5000}

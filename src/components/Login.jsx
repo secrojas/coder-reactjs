@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
+import {getFirebase} from '../utils/firebase';
+import withFirebaseAuth from 'react-with-firebase-auth'
 import 'firebase/auth';
-import firebaseConfig from '../utils/firebase';
+
 
 import { Button } from "react-bootstrap";
 import { ReactComponent as Google } from "../assets/images/google.svg";
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+const firebaseApp = getFirebase(); 
 
 class Login extends Component {
     render() {

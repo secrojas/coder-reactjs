@@ -1,5 +1,6 @@
 import React from "react";
 import ItemList from "../components/ItemList";
+import Sidebar from "../components/Sidebar";
 
 function Home(props) { 
 
@@ -13,7 +14,8 @@ function Home(props) {
     <div className="center">
       <section id="content" style={{
         textAlign: 'center',
-        marginTop: '2vh',
+        marginTop: '30px',        
+        fontFamily:'Barlow',
       }}>
         <h2>{props.greeting}</h2>
         <ItemList 
@@ -21,18 +23,8 @@ function Home(props) {
         />        
       </section>
 
-      <aside id="sidebar">
-
-        {/* <Carrito carrito={productsCart} eliminarProducto={eliminarProducto} /> */}
-        <h3 style={{
-          textAlign: 'center',
-          marginTop: '2vh',
-        }}>
-          Sidebar de novedades
-        </h3>
-
-        <p style={{textAlign:'center',fontFamily:'Barlow',marginTop:'20px'}}>Actualmente sin contenido.</p>
-
+      <aside id="sidebar">        
+        <Sidebar/>
       </aside>      
 
       <div className="clearfix"></div>

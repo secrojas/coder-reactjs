@@ -3,12 +3,13 @@ import { Col, Card} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import "./Item.scss";
 import { Button } from "react-bootstrap";
+import { BASE_PATH } from "../../utils/constants";
 
 import { CartContext } from '../../context/cartContext';
 
 function Item({producto}){
 
-  const { name,salePrice,image,sku} = producto;
+  const { title,price,image,id} = producto;
 
   const {addProductCart}  = useContext(CartContext);
   
@@ -16,12 +17,12 @@ function Item({producto}){
 
     <Col xs={12} md={3} className="item">
       <Card>
-        <Card.Img variant="top" src={image} alt="producto" />
+        <Card.Img variant="top" src={`${BASE_PATH}/${image}`} alt={`ticket ${title}`} />
         <Card.Body>
-          <Link to={{pathname: `/itemdetail/${sku}`, state: {test:'test'}}} style={{textDecoration:'none',color:'black'}}>
-            <Card.Title style={{fontSize:'16px'}}>{name}</Card.Title>          
+          <Link to={{pathname: `/itemdetail/${id}`, state: {test:'test'}}} style={{textDecoration:'none',color:'black'}}>
+            <Card.Title style={{fontSize:'16px'}}>{title}</Card.Title>          
           </Link>          
-          <Card.Text>$ {salePrice.toFixed(2)} </Card.Text>
+          <Card.Text>$ {price} </Card.Text>
           {/* <ItemCount
             min={1}
             max={10}
@@ -35,7 +36,7 @@ function Item({producto}){
           <div>
             <Button
               type="button"
-              onClick={() => addProductCart(producto.sku,producto.name,1)}                
+              onClick={() => addProductCart(producto.id,producto.title,1)}                
             >
               Agregar
             </Button>

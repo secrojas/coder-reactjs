@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { STORAGE_PRODUCTS_CART } from "../utils/constants";
@@ -25,15 +24,15 @@ export const CartProvider = (props) => {
         }
     };
 
-    const addProductCart = (sku, name, qty) => {
+    const addProductCart = (id, name, qty) => {
         const idsProducts = productsCart;
 
         var i;
         for (i = 0; i < qty; i++) 
         {
-            idsProducts.push(sku);
+            idsProducts.push(id);
         }
-        // idsProducts.push(sku);
+        // idsProducts.push(id);
         setProductsCart(idsProducts);
         localStorage.setItem(STORAGE_PRODUCTS_CART, productsCart);
         getProductsCart();
