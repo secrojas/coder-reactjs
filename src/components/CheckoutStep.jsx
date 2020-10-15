@@ -34,7 +34,7 @@ export default function CheckoutStep(props) {
 
     const [singelProductsCart, setSingelProductsCart] = useState([]);
 
-    const [setOrderId, setError ] = useState();
+    const [order, setOrderId, setError ] = useState();
 
     var listadoItems = [];
     const [itemsCarrito, setItemsCarrito] = useState({});
@@ -84,15 +84,14 @@ export default function CheckoutStep(props) {
           date:firebase.firestore.Timestamp.fromDate(new Date()),
         };
         orders.add(newOrder).then(({id})=>{
-          setOrderId(id);
+          setOrderId(id);          
           toast.info(`Pedido generado exitosamente. Número de seguimiento: ${id}.`);
         }).catch(err =>{
           setError(err);
         });        
         emptyCart();
       }
-    }
-    
+    }    
 
     useEffect(() => {
         const allProductsId = removeArrayDuplicates(productsCart);
@@ -219,8 +218,8 @@ function RenderProduct(props) {
 
     const getItemsCart = () => {
 
-        const item = {
-          id:product.id,
+        const item = {   
+          id:product.id,       
           quantity:quantity,
           title:product.title,
           price:product.price
