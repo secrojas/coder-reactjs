@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import { Container, Row, Col,Table, Alert } from "react-bootstrap";
+import { Container, Row, Col,Table, Alert, Button } from "react-bootstrap";
 import { STORAGE_PRODUCTS_CART} from "../utils/constants";
 import { BASE_PATH } from "../utils/constants";
 import {
@@ -72,7 +72,7 @@ export default function Cart(props) {
     {
       return(
         <>
-           <Container>
+           <Container style={{marginBottom:'30px'}}>
              <h1 style={{textAlign:'center',marginTop:'30px'}}>{props.greeting}</h1>
              <Row>
                <Col sm={2}></Col>
@@ -99,9 +99,24 @@ export default function Cart(props) {
                     />
                   ))}
                 </tbody>
-              </Table>
+              </Table>              
               </Col>
-            </Row>          
+            </Row>  
+            <Container>              
+              <Row>
+                <Col sm style={{textAlign:'center'}}>
+                  <Link to="/products" style={{textDecoration:'none',color:'black'}}>
+                    <Button variant="warning" size="sm">Seguir comprando</Button>
+                  </Link>
+                </Col>
+                <Col sm></Col>
+                <Col sm style={{textAlign:'center'}}>
+                  <Link to="/checkout" style={{textDecoration:'none',color:'black'}}>
+                    <Button variant="warning" size="sm">Ir al checkout</Button>{' '}
+                  </Link>
+                </Col>
+              </Row>
+            </Container>        
           </Container>        
         </>
       )

@@ -105,6 +105,7 @@ function App() {
               <Route path="/checkout">
                 <Checkout 
                     greeting='Checkout de la venta'
+                    products={items}
                 />
               </Route>
           </Switch>

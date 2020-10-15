@@ -60,3 +60,17 @@ db.collection("items").onSnapshot((querySnapshot) => {
     });
 });
 
+var tabla2 = document.getElementById('tabla-orders');
+db.collection("orders").onSnapshot((querySnapshot) => {
+    tabla2.innerHTML='';
+    querySnapshot.forEach((doc) => {
+        
+        tabla2.innerHTML += `
+            <tr>
+                <td scope="row">${doc.id}</td>
+                <td scope="row">${doc.data().total}</td>                
+            </tr>
+        `
+    });
+});
+
