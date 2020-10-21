@@ -18,21 +18,21 @@ class Sidebar extends Component{
                 <Container>
                 <Row>
                     <Col>
-                    <a href="https://web.credihub.net" target="_blank">
-                        <Image src="../images/credihub.jpg" thumbnail fluid />
+                    <a href="https://web.credihub.net" rel="noopener noreferrer" target="_blank">
+                        <Image src="../images/credihub.png" thumbnail fluid />
                     </a>              
                     </Col>            
                 </Row>
                 <Row>
                     <Col>
-                    <a href="https://web.insurhub.net" target="_blank">
+                    <a href="https://web.insurhub.net" rel="noopener noreferrer" target="_blank">
                         <Image src="../images/insurhub.png" thumbnail fluid />
                     </a>
                     </Col>            
                 </Row>
                 <Row>
                     <Col>
-                    <a href="https://cms365.app" target="_blank">
+                    <a href="https://cms365.app" rel="noopener noreferrer" target="_blank">
                         <Image src="../images/365-big.png" thumbnail fluid />
                     </a>
                     </Col>            

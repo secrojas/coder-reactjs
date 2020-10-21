@@ -26,8 +26,8 @@ class LoginCheckout extends Component {
             {
               user
                 ? <>
-                    <p style={{color:'black',fontFamily:'Barlow'}}>{user.displayName}</p>
-                    <p style={{color:'black',fontFamily:'Barlow'}}>{user.email}</p>
+                    <p style={{color:'black',fontFamily:'Barlow'}}>Nombre: {user.displayName}</p>
+                    <p style={{color:'black',fontFamily:'Barlow'}}>Correo: {user.email}</p>
                   </>                  
                 : <p></p>
             }

@@ -18,6 +18,8 @@ import {getFirestone} from '../../utils/firebase';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
+import ListOrders from './ListOrdes';
+
 const db=getFirestone();
 
 export default function CheckoutStep(props) {
@@ -138,25 +140,41 @@ export default function CheckoutStep(props) {
       return(
         <>
           <Container>
-             <h1 style={{textAlign:'center',marginTop:'30px',fontFamily:'Barlow'}}>{props.greeting}</h1>
-             <Row>
-               <Col sm={2}></Col>
-               <Col sm={8} style={{marginTop:'30px',marginBottom:'100px'}}>
-               <Alert variant="warning">
-                  <Alert.Heading style={{fontFamily:'Barlow',color:'black'}}>Actualmente no hay items agregados</Alert.Heading>
-                  <p style={{fontFamily:'Barlow',color:'black'}}>
-                    Podes volver al listado de productos para realizar alguna compra.
-                  </p>
-                  <hr />
-                  <p className="mb-0" style={{width:'170px',backgroundColor:'#0098d3',padding:'10px',borderRadius:'12px',textAlign:'center',fontFamily:'Barlow'}}>
-                    <Link to="/products" style={{textDecoration:'none',color:'white',fontWeight:'500'}}>
-                      Volver a productos
-                    </Link>
-                  </p>
-                </Alert>
-               </Col>
-              </Row>
-            </Container>
+            <h1 style={{textAlign:'center',marginTop:'30px',fontFamily:'Barlow'}}>{props.greeting}</h1>
+            <Row>
+              <Col sm={2}></Col>
+              <Col sm={8} style={{marginTop:'30px',marginBottom:'100px'}}>
+              <Alert variant="warning">
+                <Alert.Heading style={{fontFamily:'Barlow',color:'black'}}>Actualmente no hay items agregados</Alert.Heading>
+                <p style={{fontFamily:'Barlow',color:'black'}}>
+                  Podes volver al listado de productos para realizar alguna compra.
+                </p>
+                <hr />
+                <p className="mb-0" style={{width:'170px',backgroundColor:'#0098d3',padding:'10px',borderRadius:'12px',textAlign:'center',fontFamily:'Barlow'}}>
+                  <Link to="/products" style={{textDecoration:'none',color:'white',fontWeight:'500'}}>
+                    Volver a productos
+                  </Link>
+                </p>
+              </Alert>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col sm={2}></Col>
+              <Col sm={8} style={{}}>
+              
+                <p style={{fontFamily:'Barlow',color:'black'}}>
+                  Historial de tus pedidos.
+                </p>
+
+                <ListOrders
+                  email={email}
+                />
+
+              </Col>
+            </Row>
+
+          </Container>
             <ToastContainer
               position="top-center"
               autoClose={false}
@@ -215,7 +233,7 @@ export default function CheckoutStep(props) {
                     { error 
                       ?  
                         <Alert variant='danger'>
-                          Debe ingresar un teléfono por favor.
+                          Tenes que  ingresar un teléfono.
                         </Alert> 
                       : null
                     }
