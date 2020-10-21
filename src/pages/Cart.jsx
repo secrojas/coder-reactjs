@@ -136,7 +136,7 @@ function CartContentProducts(props) {
       
       return products.map((product, index) => {  
             
-        if (idProductCart == product.id) {
+        if (idProductCart === product.id) {
           
           const quantity = countDuplicatesItemArray(product.id, idsProductsCart);
           return (
@@ -155,7 +155,7 @@ function CartContentProducts(props) {
 }
 
 function RenderProduct(props) {
-    const { product, quantity, increaseQuantity, decreaseQuantity} = props;
+    const { product, quantity} = props;
   
     return (
       <>
@@ -186,9 +186,6 @@ function RenderProduct(props) {
           </p>
         </td>
       </tr>
-      </>
-      // <button onClick={() => increaseQuantity(product.sku)}>+</button>
-      // <button onClick={() => decreaseQuantity(product.sku)}>-</button>
-            
+      </>    
     );
 }

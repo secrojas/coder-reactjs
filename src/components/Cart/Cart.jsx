@@ -1,21 +1,21 @@
 import React, {useState, useEffect, useContext} from "react";
+import "./Cart.scss";
 import { Button, Badge } from "react-bootstrap";
-import {Link} from 'react-router-dom';
 import { ReactComponent as CartEmpty } from "../../assets/images/cart-empty.svg";
 import { ReactComponent as CartFull } from "../../assets/images/cart-full.svg";
-import { ReactComponent as Close } from "../../assets/images/close.svg";
-import { ReactComponent as Garbage } from "../../assets/images/garbage.svg";
+
 import { STORAGE_PRODUCTS_CART} from "../../utils/constants";
+import { CartContext } from '../../context/cartContext';
+
 import {
     removeArrayDuplicates,
     countDuplicatesItemArray,
     removeItemArray
 } from "../../utils/arrayFunc";
 
-import "./Cart.scss";
-
-import { CartContext } from '../../context/cartContext';
-import { BASE_PATH } from "../../utils/constants";
+import CartContentHeader from "./CartContentHeader";
+import CartContentProducts from "./CartContentProducts";
+import CartContentFooter from "./CartContentFooter";
 
 export default function Cart(props) {
 
@@ -50,7 +50,7 @@ export default function Cart(props) {
       if (products.length>0) {
         products.forEach(product => {
           productData.forEach(item => {
-            if (product.id == item.id) {
+            if (product.id === item.id) {
               const totalValue = product.price * item.quantity;
               totalPrice = totalPrice + totalValue;
             }
@@ -103,11 +103,13 @@ export default function Cart(props) {
                 <CartEmpty onClick={openCart} />
                 )}
             </Button>
+
             <div className="cart-content" style={{ width: widthCartContent }}>
                 <CartContentHeader
                     closeCart={closeCart}
                     emptyCart={emptyCart}
                 />
+
                 <div className="cart-content__products">
                     {singelProductsCart.map((idProductCart, index) => (
                         <CartContentProducts
@@ -124,94 +126,4 @@ export default function Cart(props) {
             </div>
         </>
     );
-}
-
-function CartContentHeader(props) {
-    const { closeCart, emptyCart } = props;
-  
-    return (
-      <div className="cart-content__header">
-        <div>
-          <Close onClick={closeCart} />
-          <h2>Carrito</h2>
-        </div>
-  
-        <Button variant="link" onClick={emptyCart}>
-          Vaciar
-          <Garbage />
-        </Button>
-      </div>
-    );
-}
-
-function CartContentProducts(props) {
-    const {
-      products,
-      idsProductsCart,
-      idProductCart,
-      increaseQuantity,
-      decreaseQuantity
-    } = props;
-  
-    if (products.length>0 ) {
-
-      // console.log(products.result.products);
-      
-      return products.map((product, index) => {  
-            
-        if (idProductCart == product.id) {
-          
-          const quantity = countDuplicatesItemArray(product.id, idsProductsCart);
-          return (
-            <RenderProduct
-              key={index}
-              product={product}
-              quantity={quantity} 
-              increaseQuantity={increaseQuantity}
-              decreaseQuantity={decreaseQuantity}             
-            />
-          );
-        }
-      });
-    }
-    return null;
-}
-
-function RenderProduct(props) {
-    const { product, quantity, increaseQuantity, decreaseQuantity} = props;
-  
-    return (
-      <div className="cart-content__product">
-        <img src={`${BASE_PATH}/${product.image}`} alt={`ticket ${product.title}`} />
-        <div className="cart-content__product-info">
-          <div>
-            <h3>{product.title.substr(0, 25)}...</h3>
-            <p>$ {product.price}</p>
-          </div>
-          <div>
-            <p>En carrito: {quantity}</p>
-            <div>
-              <button onClick={() => increaseQuantity(product.id)}>+</button>
-              <button onClick={() => decreaseQuantity(product.id)}>-</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-}
-
-function CartContentFooter(props) {
-  const { cartTotalPrice } = props;
-
-  return (
-    <div className="cart-content__footer">
-      <div>
-        <p>Total a abonar: </p>
-        <p>$ {cartTotalPrice.toFixed(2)}</p>
-      </div>
-      <Link to="/checkout" style={{textDecoration:'none',color:'black'}}>
-        <Button>Checkout</Button>
-      </Link>
-    </div>
-  );
 }

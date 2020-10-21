@@ -1,8 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import './assets/css/App.css';
 import 'react-toastify/dist/ReactToastify.css';
-import useFetch from "./components/hooks/useFetch";
-import { urlApiProducts } from "./utils/constants";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import { ToastContainer} from "react-toastify";
 import { CartProvider } from './context/cartContext';

@@ -56,6 +56,7 @@ export default function CheckoutStep(props) {
 
     const [singelProductsCart, setSingelProductsCart] = useState([]);
 
+    // eslint-disable-next-line no-unused-vars
     const [order, setOrderId, setError ] = useState();
 
     var listadoItems = [];
@@ -277,6 +278,7 @@ function CartContentProducts(props) {
   
     if (products.length>0) {
       
+      // eslint-disable-next-line array-callback-return
       return products.map((product, index) => {  
             
         if (idProductCart === product.id) {

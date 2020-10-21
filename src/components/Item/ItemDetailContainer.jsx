@@ -41,7 +41,7 @@ const ItemDetailContainer= (props)=> {
         })
       }, [id]);
 
-    if(JSON.stringify(item)=='{}'){
+    if(JSON.stringify(item)==='{}'){
         return <div style={{margin: '4vh 7vw'}}>
             <Loading />
         </div>

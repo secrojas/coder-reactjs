@@ -51,7 +51,7 @@ function Categorias(props) {
       }));
     })
     .catch((error) => {
-      console.log("There was an error trying to get the item of the categoy: ", error);
+      console.log("There was an error trying to get the item of the category: ", error);
     })
   }, [items]); 
 
