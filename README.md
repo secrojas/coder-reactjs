@@ -1,4 +1,4 @@
-# VENTA DE TICKET - CMS 365º
+# VENTA DE TICKETS - CMS 365º
 
 ## Descripción del proyecto
 
@@ -17,6 +17,23 @@ Representa la entrega final del proyecto de React JS en CoderHouse.
 
 ## VIDEO DEMOSTRATIVO
 [DEMO](https://youtu.be/IaXNxkGZEo0) de la tienda virtual y su funcionamiento.
+
+
+
+
+## Clonar el proyecto
+
+Se deben instalar las depencias luego de clonado (ó descargado) el proyecto:
+
+### `npm install`
+
+Ejecutar en el servidor local:
+
+### `npm start`
+
+## Firebase
+
+El proyecto muestra información que toma de la base de datos de Firebase, por lo cual hay que generar su propio backend en firebase y configurar las variables de entorno o credenciales.
 
 ## Extra Docs:
 - [Environment Docs](docs/ambiente.md)
