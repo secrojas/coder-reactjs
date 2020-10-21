@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Image} from "react-bootstrap";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
-MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
+MDBDropdownToggle, MDBDropdownMenu } from "mdbreact";
 
 import Login from "../../Login"
 import Cart from "../../Cart/Cart";

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
-import ItemList from "../components/ItemList";
+import ItemList from "../components/Item/ItemList";
 import Sidebar from "../components/Sidebar";
 
 function Home(props) { 

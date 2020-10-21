@@ -1,13 +1,12 @@
 import React, {useState, useEffect, useContext} from "react";
 import { Container, Row, Col,Table, Alert, Button } from "react-bootstrap";
-import { BASE_PATH } from "../utils/constants";
 import {
     removeArrayDuplicates,
     countDuplicatesItemArray
-} from "../utils/arrayFunc";
-import { STORAGE_PRODUCTS_CART} from "../utils/constants";
+} from "../../utils/arrayFunc";
+import { STORAGE_PRODUCTS_CART} from "../../utils/constants";
 
-import { CartContext } from '../context/cartContext';
+import { CartContext } from '../../context/cartContext';
 
 import { toast } from "react-toastify";
 import { ToastContainer} from "react-toastify";
@@ -15,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import {Link} from 'react-router-dom';
 
-import {getFirestone} from '../utils/firebase';
+import {getFirestone} from '../../utils/firebase';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -24,13 +23,36 @@ const db=getFirestone();
 export default function CheckoutStep(props) {
 
     const { products, email, nombre } = props;
+
+    //Crear state de los datos adicionales del form
+    const [datosAd, actualizarDatosAd] = useState({
+      phone:'',
+      comment:'',
+    });
+
+    const [error, actualizarError] = useState(false);
+
+    //Función que se ejecuta cuando el usuario escribe un input
+    const actualizarState = e =>{
+      actualizarDatosAd({
+            ...datosAd,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    //Extraer los valores de los datos adicionales
+    const {phone, comment} = datosAd;
     
     const userInfo = {
       name:nombre,
-      email:email
-    }    
+      email:email,
+      phone:phone,
+      comment:comment
+    }
+    
+    const estado = "PENDIENTE";
 
-    const {productsCart}  = useContext(CartContext);    
+    const {productsCart, getProductsCart}  = useContext(CartContext);    
 
     const [singelProductsCart, setSingelProductsCart] = useState([]);
 
@@ -40,7 +62,8 @@ export default function CheckoutStep(props) {
     const [itemsCarrito, setItemsCarrito] = useState({});
     
     const emptyCart = () => {
-      localStorage.removeItem(STORAGE_PRODUCTS_CART);      
+      localStorage.removeItem(STORAGE_PRODUCTS_CART); 
+      getProductsCart();     
     };
 
     const [cartTotalPrice, setCartTotalPrice] = useState(0);
@@ -62,7 +85,7 @@ export default function CheckoutStep(props) {
       if (products.length>0) {
         products.forEach(product => {
           productData.forEach(item => {
-            if (product.id == item.id) {
+            if (product.id === item.id) {
               const totalValue = product.price * item.quantity;
               totalPrice = totalPrice + totalValue;
             }
@@ -73,7 +96,16 @@ export default function CheckoutStep(props) {
       setCartTotalPrice(totalPrice);
     }, [productsCart, products]);    
 
-    const guardarPedido = ()=>{
+    const submitPedido = e =>{
+      e.preventDefault();        
+        
+      //Validar
+      if(phone.trim()==='')
+      {
+          actualizarError(true);
+          return;
+      }
+
       if(itemsCarrito.length>0)
       {
         const orders= db.collection("orders");
@@ -81,6 +113,7 @@ export default function CheckoutStep(props) {
           buyer:userInfo,
           items:itemsCarrito,
           total:cartTotalPrice,
+          estado:estado,
           date:firebase.firestore.Timestamp.fromDate(new Date()),
         };
         orders.add(newOrder).then(({id})=>{
@@ -89,7 +122,8 @@ export default function CheckoutStep(props) {
         }).catch(err =>{
           setError(err);
         });        
-        emptyCart();
+        emptyCart();        
+        
       }
     }    
 
@@ -122,6 +156,15 @@ export default function CheckoutStep(props) {
                </Col>
               </Row>
             </Container>
+            <ToastContainer
+              position="top-center"
+              autoClose={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+            />
         </>
       )
     }
@@ -140,7 +183,7 @@ export default function CheckoutStep(props) {
                   <tr>
                      <th>Nombre</th>
                      <th>Precio</th>
-                    <th>Cantidad</th>
+                     <th>Cantidad</th>
                    </tr>
                 </thead>
                  <tbody>
@@ -161,8 +204,53 @@ export default function CheckoutStep(props) {
                     
           </Container>  
           <div style={{alignContent:'center'}}>
-              <p>Total del pedido: $ {cartTotalPrice.toFixed(2)}</p>
-              <Button onClick={()=>guardarPedido()} variant="warning" size="sm">Confirmar Pedido</Button>
+              <p style={{fontWeight:'bold'}}>Total del pedido: $ {cartTotalPrice.toFixed(2)}</p>
+
+              <Container style={{marginBottom:'50px'}}>
+                <Row className="justify-content-md-center">
+                <Col sm></Col>
+                <Col sm>
+
+                    { error 
+                      ?  
+                        <Alert variant='danger'>
+                          Debe ingresar un teléfono por favor.
+                        </Alert> 
+                      : null
+                    }
+
+                    <form
+                      onSubmit={submitPedido}
+                    >
+                      <label>Teléfono de contacto</label>
+                      <input
+                          type="text"
+                          name="phone"
+                          className="u-full-width"
+                          placeholder="Teléfono de contacto"
+                          onChange={actualizarState}
+                          value={phone}
+                      />                
+
+                      <label>Comentarios/observaciones</label>
+                      <textarea
+                          className="u-full-width"
+                          name="comment"
+                          onChange={actualizarState}
+                          value={comment}
+                      ></textarea>
+
+                      <Button
+                          type="submit"
+                          className="u-full-width button-primary"
+                          style={{backgroundColor:'#ED6C44',borderColor:'#ED6C44'}}
+                      >Confirmar</Button>
+                    </form>
+                  </Col>
+                  <Col sm></Col>
+                </Row>
+              </Container>              
+
           </div>
           <ToastContainer
             position="top-center"
@@ -191,7 +279,7 @@ function CartContentProducts(props) {
       
       return products.map((product, index) => {  
             
-        if (idProductCart == product.id) {
+        if (idProductCart === product.id) {
           
           const quantity = countDuplicatesItemArray(product.id, idsProductsCart);
           return (
@@ -214,6 +302,7 @@ function RenderProduct(props) {
     
     useEffect(() => {
         getItemsCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);   
 
     const getItemsCart = () => {

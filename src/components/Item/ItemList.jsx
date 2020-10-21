@@ -1,6 +1,6 @@
 import React from "react";
-import Item from './Item/Item';
-import Loading from "../components/Loading";
+import Item from './Item';
+import Loading from "../Loading";
 import { Container, Row } from "react-bootstrap";
 
 

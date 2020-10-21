@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import CheckoutStep from "./CheckoutStep"
 import * as firebase from 'firebase/app';
-import {getFirebase} from '../utils/firebase';
+import {getFirebase} from '../../utils/firebase';
 import withFirebaseAuth from 'react-with-firebase-auth'
 import 'firebase/auth';
-import InputGroup from 'react-bootstrap/InputGroup'
 
 
 import { Button } from "react-bootstrap";
-import { ReactComponent as Google } from "../assets/images/google.svg";
+import { ReactComponent as Google } from "../../assets/images/google.svg";
 
 const firebaseApp = getFirebase(); 
 

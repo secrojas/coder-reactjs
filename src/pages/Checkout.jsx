@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import LoginCheckout from "../components/LoginCheckout"
+import LoginCheckout from "../components/Checkout/LoginCheckout"
 
 function Checkout(props) {
   
