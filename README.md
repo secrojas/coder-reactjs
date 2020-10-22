@@ -10,7 +10,7 @@ Representa la entrega final del proyecto de React JS en CoderHouse.
 
 ## GIF DEMOSTRATIVO
 
-![GIF](https://tiendacms365.srojasweb.dev/recursos/entrega_final.gif)
+[VER GIF](https://tiendacms365.srojasweb.dev/recursos/entrega_final.gif)
 
 ## Especificaciones del proyecto:
 - [Detalle](docs/especificaciones.md)
