@@ -92,7 +92,7 @@ export default function Cart(props) {
 
     return (
         <>
-            <Button variant="link" className="cart">
+            <Button variant="link" className="cart" style={{backgroundColor:'#343A40'}}>
                 {productsCart.length > 0 ? (
                 <div>
                   <CartFull onClick={openCart} />

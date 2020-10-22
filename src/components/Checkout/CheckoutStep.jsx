@@ -261,9 +261,9 @@ export default function CheckoutStep(props) {
 
                       <Button
                           type="submit"
-                          className="u-full-width button-primary"
-                          style={{backgroundColor:'#ED6C44',borderColor:'#ED6C44'}}
-                      >Confirmar</Button>
+                          className="center button-primary"
+                          style={{backgroundColor:'#ED6C44',borderColor:'#ED6C44',maxWidth:'none',fontWeight:'bold'}}
+                      >Confirmar Pedido</Button>
                     </form>
                   </Col>
                   <Col sm></Col>

@@ -28,8 +28,8 @@ class Login extends Component {
   
             {
               user
-                ? <Button variant="outline-danger" style={{marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signOut}>Sign out</Button>
-                : <Button variant="outline-primary" style={{marginTop:'-20px',marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signInWithGoogle}>
+                ? <Button variant="outline-danger" style={{backgrondColor:'#343A40',marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signOut}>Cerrar Sesión</Button>
+                : <Button variant="outline-primary" style={{backgrondColor:'#343A40',marginTop:'-20px',marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signInWithGoogle}>
                     Login <Google style={{marginLeft:'3px',width:'20px'}}/>
                   </Button>
             }

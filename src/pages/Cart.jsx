@@ -102,21 +102,33 @@ export default function Cart(props) {
               </Table>              
               </Col>
             </Row>  
-            <Container>              
+                         
               <Row>
-                <Col sm style={{textAlign:'center'}}>
-                  <Link to="/products" style={{textDecoration:'none',color:'black'}}>
-                    <Button variant="warning" size="sm">Seguir comprando</Button>
+                <Col sm={3}></Col>
+                <Col sm={3} className="center">
+                  <Link to="/products" style={{textDecoration:'none',color:'black'}}>                    
+                    <Button
+                          type="submit"
+                          className="center button-primary"
+                          style={{backgroundColor:'#ED6C44',borderColor:'#ED6C44',maxWidth:'190px'}}
+                      >
+                        Seguir comprando
+                      </Button>
                   </Link>
                 </Col>
-                <Col sm></Col>
-                <Col sm style={{textAlign:'center'}}>
-                  <Link to="/checkout" style={{textDecoration:'none',color:'black'}}>
-                    <Button variant="warning" size="sm">Ir al checkout</Button>{' '}
+                <Col sm={3} className="center">
+                  <Link to="/checkout" style={{textDecoration:'none',color:'black'}}>                    
+                    <Button
+                          type="submit"
+                          className="center button-primary"
+                          style={{backgroundColor:'#ED6C44',borderColor:'#ED6C44',maxWidth:'190px'}}
+                      >
+                        Ir al checkout
+                      </Button>
                   </Link>
                 </Col>
-              </Row>
-            </Container>        
+                <Col sm={3}></Col>
+              </Row>        
           </Container>        
         </>
       )
