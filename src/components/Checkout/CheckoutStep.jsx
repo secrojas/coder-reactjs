@@ -69,6 +69,13 @@ export default function CheckoutStep(props) {
       getProductsCart();     
     };
 
+    const [cartOpen, setCartOpen] = useState(false);
+
+    const closeCart = () => {
+      setCartOpen(false);
+      document.body.style.overflow = "scroll";
+  };
+
     const [cartTotalPrice, setCartTotalPrice] = useState(0);
     
     useEffect(() => {
@@ -138,7 +145,7 @@ export default function CheckoutStep(props) {
     if(singelProductsCart.length===0)
     {
       return(
-        <>
+        <>          
           <Container>
             <h1 style={{textAlign:'center',marginTop:'30px',fontFamily:'Barlow'}}>{props.greeting}</h1>
             <Row>

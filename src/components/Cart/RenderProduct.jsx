@@ -9,13 +9,13 @@ export default function RenderProduct(props) {
         <img src={`${BASE_PATH}/${product.image}`} alt={`ticket ${product.title}`} />
         <div className="cart-content__product-info">
           <div>
-            <h3>{product.title.substr(0, 25)}...</h3>
+            <h3>{product.title.substr(0, 15)}...</h3>
             <p>$ {product.price}</p>
           </div>
           <div>
             <p>En carrito: {quantity}</p>
-            <div>
-              <button onClick={() => increaseQuantity(product.id)}>+</button>
+            <div >
+              <button style={{marginLeft:'-80px'}} onClick={() => increaseQuantity(product.id)}>+</button>
               <button onClick={() => decreaseQuantity(product.id)}>-</button>
             </div>
           </div>

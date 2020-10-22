@@ -8,7 +8,7 @@ class Slider extends Component{
             // <div id="slider" className="slider-big">
             //     <h1>Bienvenido a la tienda virtual</h1>                
             // </div>
-            <Image src="http://localhost:3000/images/365.png" fluid />
+            <Image src="https://tiendacms365.srojasweb.dev/images/365.png" fluid />
         );
     }
 }

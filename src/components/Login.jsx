@@ -10,6 +10,8 @@ import { ReactComponent as Google } from "../assets/images/google.svg";
 
 const firebaseApp = getFirebase(); 
 
+console.log(firebaseApp);
+
 class Login extends Component {
     render() {
       const {
