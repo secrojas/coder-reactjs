@@ -77,7 +77,7 @@ export default function Cart(props) {
              <Row>
                <Col sm={2}></Col>
                <Col sm={8}>
-               <Table striped bordered hover style={{marginTop:'30px'}}>
+               <Table responsive striped bordered hover style={{marginTop:'30px'}}>
                 <thead>
                   <tr>
                     <th>Item</th>
@@ -110,7 +110,7 @@ export default function Cart(props) {
                     <Button
                           type="submit"
                           className="center button-primary"
-                          style={{backgroundColor:'#ED6C44',borderColor:'#ED6C44',maxWidth:'190px'}}
+                          style={{backgroundColor:'#ED6C44',borderColor:'#ED6C44',maxWidth:'190px',marginBottom:'10px'}}
                       >
                         Seguir comprando
                       </Button>

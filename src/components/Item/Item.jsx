@@ -35,10 +35,12 @@ function Item({producto}){
           /> */}
           <div>
             <Button
-              type="button"
-              onClick={() => addProductCart(producto.id,producto.title,1)}                
+              type="submit"
+              className="center button-primary"
+              onClick={() => addProductCart(producto.id,producto.title,1)}
+              style={{backgroundColor:'#ED6C44',borderColor:'#ED6C44',maxWidth:'none'}}
             >
-              Agregar
+              AGREGAR
             </Button>
           </div>
 

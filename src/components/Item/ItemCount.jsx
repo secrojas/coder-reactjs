@@ -51,12 +51,13 @@ export function ItemCount({
 
           <div>
             {contador
-            ?
-            <Button 
-              variant="warning" 
-              style={{backgroundColor:'#EF811A',color:'white',fontFamily:'Barlow'}}
+            ?            
+            <Button
+              type="submit"
+              className="center button-primary"
               onClick={() => addProductCart(id, title, contador)}
-            > 
+              style={{backgroundColor:'#ED6C44',borderColor:'#ED6C44',maxWidth:'none'}}
+            >
               Agregar: {contador}
             </Button>
             :

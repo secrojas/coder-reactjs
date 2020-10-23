@@ -31,6 +31,9 @@ Representa la entrega final del proyecto de React JS en CoderHouse.
 
 El proyecto muestra información que toma de la base de datos de Firebase, por lo cual hay que generar su propio backend en firebase y configurar las variables de entorno o credenciales.
 
+## Extra Docs:
+- [Variables de ambiente](docs/ambiente.md)
+
 ## VIDEO DEMOSTRATIVO
 [DEMO](https://youtu.be/IaXNxkGZEo0) de la tienda virtual y su funcionamiento.
 
@@ -44,5 +47,4 @@ Ejecutar en el servidor local:
 
 ### `npm start`
 
-## Extra Docs:
-- [Environment Docs](docs/ambiente.md)
+

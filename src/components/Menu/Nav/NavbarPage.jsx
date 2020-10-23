@@ -56,12 +56,12 @@ export default function NavbarPage(props) {
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
-                  <div className="d-none d-md-inline">Categorías</div>
+                  <div className="d-md-inline">Categorías</div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
 
                   {categories.map((category,index) => (     
-                    <MDBNavLink to={{pathname: `/products/categories/${category.id}`}} style={{color:'black'}}>{category.name}</MDBNavLink>        
+                    <MDBNavLink to={{pathname: `/products/categories/${category.id}`}} style={{marginLeft:'10px',color:'black'}}>{category.name}</MDBNavLink>        
                   ))}
 
                 </MDBDropdownMenu>

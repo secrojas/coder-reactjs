@@ -204,7 +204,8 @@ export default function CheckoutStep(props) {
                <Col sm={2}></Col>
                <Col sm={8}>
                <p style={{textAlign:'center',marginTop:'30px'}}>Detalle del pedido:</p>
-               <Table striped bordered hover style={{marginTop:'30px'}}>
+               
+               <Table responsive striped bordered hover style={{marginTop:'30px'}}>
                 <thead>
                   <tr>
                      <th>Nombre</th>

@@ -12,4 +12,26 @@ Al iniciar sesión podra procesar su pedido ingresando un teléfono de contacto 
 
 Al procesar el pedido, se le informará el número de seguimiento y podra tambien visualizar sus pedidos con su estado.
 
+**Temario que contempla el curso**
+
+- Instalación y configuración del entorno
+- JSX y Webpack
+- Componentes
+- Promises, asincronía y MAP
+- Consumiendo APIs
+- Routing y Navegación
+- Eventos y declaraciones
+- Eventos aplicativos
+- Renderizado condicional
+- Firebase
+- Github
+
+**Adicionales**
+
+- Login de Firebase y google
+- Incorporar estilos (Bootstrap/SAAS/Materialize)
+- Uso de LocalStorage
+- Uso de Toastify
+- Deploy en netlify y en server cpanel con dominio propio
+
 

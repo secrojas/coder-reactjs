@@ -5,8 +5,7 @@ import {getFirebase} from '../../utils/firebase';
 import withFirebaseAuth from 'react-with-firebase-auth'
 import 'firebase/auth';
 
-
-import { Button } from "react-bootstrap";
+import { Container, Row, Col,  Button } from "react-bootstrap";
 import { ReactComponent as Google } from "../../assets/images/google.svg";
 
 const firebaseApp = getFirebase(); 
@@ -28,21 +27,31 @@ class LoginCheckout extends Component {
                 ? <>
                     <p style={{color:'black',fontFamily:'Barlow'}}>Nombre: {user.displayName}</p>
                     <p style={{color:'black',fontFamily:'Barlow'}}>Correo: {user.email}</p>
-                    <div style={{width:'200px',margin:'0 auto'}}>
-                      <p style={{textAlign:'center'}}>
-                        <Button variant="danger" style={{marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signOut}>Cerrar Sesión</Button>
-                      </p>                      
-                    </div>
-                    
+
+                    <Container>
+                      <Row>
+                        <Col md={4} className="item"></Col>
+                        <Col md={4} className="item">                        
+                          <div className="center">
+                             <Button variant="danger" style={{maxWidth:'none',marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signOut}>Cerrar Sesión</Button>                           
+                          </div>
+                        </Col>
+                      </Row>
+                    </Container>                    
                   </>                  
-                : <> 
-                    <div style={{width:'200px',margin:'0 auto'}}>
-                      <p style={{textAlign:'center'}}>
-                        <Button  style={{backgroundColor:'black',marginTop:'20px',marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signInWithGoogle}>
-                          LOGIN <Google style={{marginLeft:'3px',width:'20px'}}/>
-                        </Button>
-                      </p>                      
-                    </div>
+                : <>                     
+                    <Container>
+                      <Row>
+                        <Col md={4} className="item"></Col>
+                        <Col md={4} className="item">                        
+                          <div className="center">
+                          <Button  style={{backgroundColor:'black',marginTop:'20px',marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signInWithGoogle}>
+                            LOGIN <Google style={{marginLeft:'3px',width:'20px'}}/>
+                          </Button>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Container> 
                   </>
             }  
             

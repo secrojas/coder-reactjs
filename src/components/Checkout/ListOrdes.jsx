@@ -28,7 +28,7 @@ export default function ListOrders(props) {
       }, []);
 
     return(
-        <Table striped bordered hover style={{marginTop:'30px'}}>
+        <Table responsive striped bordered hover style={{marginTop:'30px'}}>
             <thead>
                 <tr>
                     <th>Número de seguimiento</th>
