@@ -33,7 +33,7 @@ class LoginCheckout extends Component {
                         <Col md={4} className="item"></Col>
                         <Col md={4} className="item">                        
                           <div className="center">
-                             <Button variant="danger" style={{maxWidth:'none',marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signOut}>Cerrar Sesión</Button>                           
+                             <Button variant="danger" style={{maxWidth:'none',margin:'0 auto',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signOut}>Cerrar Sesión</Button>                           
                           </div>
                         </Col>
                       </Row>
@@ -45,7 +45,7 @@ class LoginCheckout extends Component {
                         <Col md={4} className="item"></Col>
                         <Col md={4} className="item">                        
                           <div className="center">
-                          <Button  style={{backgroundColor:'black',marginTop:'20px',marginLeft:'10px',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signInWithGoogle}>
+                          <Button  style={{backgroundColor:'black',margin:'0 auto',color:'white',fontFamily:'Barlow',textTransform:'capitalize'}} onClick={signInWithGoogle}>
                             LOGIN <Google style={{marginLeft:'3px',width:'20px'}}/>
                           </Button>
                           </div>
